@@ -1,5 +1,107 @@
-/* DASHBOARD */
+
 <style>
+
+/* ==============================
+   FORM CONTAINER
+============================== */
+
+.form-container {
+    width: 600px;
+    margin: 30px auto;
+    padding: 30px 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==============================
+   FORM FIELDS
+============================== */
+
+.form-container .form-group {
+    margin-bottom: 22px;
+}
+
+.form-container .form-group > label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="number"],
+.form-container input[type="date"],
+.form-container input[type="time"],
+.form-container input[type="month"],
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    height: 42px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background: #fff;
+}
+
+.form-container select {
+    cursor: pointer;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+
+/* ==============================
+   STATUS
+============================== */
+
+.form-container .status-options {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.form-container .status-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.form-container .status-option input[type="radio"] {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+
+/* ==============================
+   FORM BUTTONS
+============================== */
+
+.form-container .buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.form-container .save-button,
+.form-container .cancel-button {
+    min-width: 100px;
+    padding: 10px 20px;
+}
+
 .content h2 {
     margin-top: 0;
     margin-bottom: 25px;
@@ -155,11 +257,11 @@
 
     <div class="links">
 
-        <a href="{{ route('employees.index') }}">
+        <a href="{{ route('employees.showAll') }}">
             👥 Employees
         </a>
-<br>
-        <a href="{{ route('departments.index') }}">
+         <br>
+        <a href="{{ route('departments.showAll') }}">
             🏢 Departments
         </a><br>
 

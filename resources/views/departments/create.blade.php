@@ -1,124 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Department</title>
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    {{-- <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="text"] {
-            width: 400px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 10px 20px;
-            background: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #218838;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            margin: 0;
-        }
-
-        .back {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .back:hover {
-            background: #0056b3;
-        }
-
-        .error {
-            color: red;
-            margin-bottom: 15px;
-        }
-
-        /* Status */
-        .status-options {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .status-option {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: normal;
-            margin: 0;
-        }
-
-        .status-option input {
-            width: auto;
-            margin: 0;
-        }
-
-      
-
-        /* Cancel Button */
-        .cancel-button {
-            margin-left: 10px;
-            background: #6c757d;
-        }
-
-        .cancel-button:hover {
-            background: #5a6268;
-        }
-        .error {
-            color: red;
-            margin-bottom: 15px;
-        }
-    </style> --}}
-</head>
-
-<body>
+@extends('layouts.app')
+@section('title', 'Add Department')
+@section('content')
 
     <div class="header">
-
         <h1>Add Department</h1>
 
         <a href="{{ route('departments.index') }}" class="back">
             Back
         </a>
-
     </div>
-
     @if ($errors->any())
         <div class="error">
             <ul>
@@ -128,7 +18,7 @@
             </ul>
         </div>
     @endif
-
+<div class="form-container">
     <form action="{{ route('departments.store') }}" method="POST">
 
         @csrf
@@ -202,20 +92,20 @@
         </div>
 
         <!-- Buttons -->
-        <button type="submit">
-            Save
-        </button>
+        <div class="buttons">
+
+            <button type="submit" class="save-button">
+                Save
+            </button>
 
         <button
             type="button"
             class="cancel-button"
-            onclick="clearForm()"
-        >
-            Cancel
+            onclick="clearForm()">Cancel
         </button>
 
     </form>
-
+</div>
     <script>
 
         function clearForm() {
@@ -231,6 +121,4 @@
         }
 
     </script>
-
-</body>
-</html>
+@endsection

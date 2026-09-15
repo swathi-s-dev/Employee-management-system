@@ -1,19 +1,16 @@
-
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @extends('layouts.app')
-
 @section('title', 'Attendance Management')
-
 @section('content')
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <div class="header">
         <h1>Attendance Management</h1>
-        <a href="{{ route('dashboard') }}" class="back">
-            🏠 Dashboard
+       
+        <a href="{{ route('attendances.create') }}" class="add-btn">
+             Add Attendance
         </a>
-        <a href="{{ route('attendances.create') }}" class="back">
-            + Add Attendance
-        </a>
-  
+    </div>
 
     @if(session('success'))
         <div class="success">
@@ -54,19 +51,19 @@
 
                     <td>
                         @if($attendance->status == 'Present')
-                            <span class="status present">Present</span>
+                            <span class="status-present">Present</span>
 
                         @elseif($attendance->status == 'Absent')
-                            <span class="status absent">Absent</span>
+                            <span class="status-absent">Absent</span>
 
                         @elseif($attendance->status == 'Leave')
-                            <span class="status leave">Leave</span>
+                            <span class="status-leave">Leave</span>
                         @endif
                     </td>
 
                     <td>
-                        <a href="{{ route('attendances.edit', $attendance->id) }}">
-                            Edit
+                        <a href="{{ route('attendances.edit', $attendance->id) }}" class="edit" title="Edit Employee">
+                            <i class="bi bi-pencil-square"></i>
                         </a>
 
                         <form action="{{ route('attendances.destroy', $attendance->id) }}"
@@ -77,8 +74,7 @@
                             @method('DELETE')
 
                             <button type="submit"
-                                    onclick="return confirm('Are you sure you want to delete this attendance?')">
-                                Delete
+                                   class="delete" title="Delete Payroll" onclick="return confirm('Are you sure?')"> <i class="bi bi-trash"></i>
                             </button>
 
                         </form>

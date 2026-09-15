@@ -1,22 +1,19 @@
 @extends('layouts.app')
-
 @section('title', 'Payroll Management')
-
 @section('content')
 
-<h1>Payroll Management</h1>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <div class="header">
+       <h1>Payroll Management</h1>
 
-<a href="{{ route('payrolls.create') }}">
-    + Add Payroll
-</a>
-
-@if(session('success'))
-
-    <div class="success">
-        {{ session('success') }}
+       <a href="{{ route('payrolls.create') }}"class="add-btn">Add Payroll</a>
     </div>
+    @if(session('success'))
+        <div class="success">
+            {{ session('success') }}
+        </div>
 
-@endif
+    @endif
 
 
 <table border="1" cellpadding="10" cellspacing="0" width="100%">
@@ -71,13 +68,13 @@
 
                 @if($payroll->status == 'Paid')
 
-                    <span class="status present">
+                    <span class="status-active">
                         Paid
                     </span>
 
                 @else
 
-                    <span class="status absent">
+                    <span class="status-inactive">
                         Pending
                     </span>
 
@@ -87,25 +84,16 @@
 
             <td>
 
-                <a href="{{ route('payrolls.edit', $payroll->id) }}">
-                    Edit
-                </a>
+                <a href="{{ route('payrolls.edit', $payroll->id) }}" class="edit" title="Edit Employee"> <i class="bi bi-pencil-square"></i></a>
 
-                <form
-                    action="{{ route('payrolls.destroy', $payroll->id) }}"
+                <form action="{{ route('payrolls.destroy', $payroll->id) }}"
                     method="POST"
-                    style="display:inline;"
-                >
+                    style="display:inline;">
 
                     @csrf
-
                     @method('DELETE')
 
-                    <button
-                        type="submit"
-                        onclick="return confirm('Are you sure?')"
-                    >
-                        Delete
+                    <button type="submit" class="delete" title="Delete Payroll" onclick="return confirm('Are you sure?')"> <i class="bi bi-trash"></i>
                     </button>
 
                 </form>

@@ -1,52 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add Payroll</title>
+@extends('layouts.app')
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
+@section('title', 'Add Payroll')
 
-<body>
+@section('content')
+<div class="header">
+    <h1>Add Payroll</h1>
 
-    <div class="header">
-        <h1>Add Payroll</h1>
-
-        <a href="{{ route('payrolls.index') }}" class="back">
-            ← Back
-        </a>
-    </div>
+    <a href="{{ route('payrolls.index') }}" class="back">
+        Back
+    </a>
+</div>
 
     @if ($errors->any())
+
         <div class="error">
+
             <ul>
+
                 @foreach ($errors->all() as $error)
+
                     <li>{{ $error }}</li>
+
                 @endforeach
+
             </ul>
+
         </div>
+
     @endif
 
+<div class="form-container">
     <form action="{{ route('payrolls.store') }}" method="POST">
 
         @csrf
 
+
+        <!-- Employee -->
+
         <div class="form-group">
+
             <label>Employee</label>
 
             <select name="employee_id" required>
+
                 <option value="">Select Employee</option>
 
                 @foreach($employees as $employee)
-                    <option value="{{ $employee->id }}"
-                        {{ old('employee_id') == $employee->id ? 'selected' : '' }}>
+
+                    <option
+                        value="{{ $employee->id }}"
+                        {{ old('employee_id') == $employee->id ? 'selected' : '' }}
+                    >
                         {{ $employee->name }}
                     </option>
+
                 @endforeach
+
             </select>
+
         </div>
 
 
+        <!-- Month -->
+
         <div class="form-group">
+
             <label>Month</label>
 
             <input
@@ -55,10 +73,14 @@
                 value="{{ old('month') }}"
                 required
             >
+
         </div>
 
 
+        <!-- Basic Salary -->
+
         <div class="form-group">
+
             <label>Basic Salary</label>
 
             <input
@@ -66,15 +88,20 @@
                 name="basic_salary"
                 id="basic_salary"
                 value="{{ old('basic_salary') }}"
-                min="0"
+                placeholder="Enter Basic Salary"
+                min="10000"
                 step="0.01"
                 required
                 oninput="calculateNetSalary()"
             >
+
         </div>
 
 
+        <!-- Allowance -->
+
         <div class="form-group">
+
             <label>Allowance</label>
 
             <input
@@ -82,14 +109,19 @@
                 name="allowance"
                 id="allowance"
                 value="{{ old('allowance', 0) }}"
+                placeholder="Enter Allowance"
                 min="0"
                 step="0.01"
                 oninput="calculateNetSalary()"
             >
+
         </div>
 
 
+        <!-- Deduction -->
+
         <div class="form-group">
+
             <label>Deduction</label>
 
             <input
@@ -97,14 +129,19 @@
                 name="deduction"
                 id="deduction"
                 value="{{ old('deduction', 0) }}"
+                placeholder="Enter Deduction"
                 min="0"
                 step="0.01"
                 oninput="calculateNetSalary()"
             >
+
         </div>
 
 
+        <!-- Net Salary -->
+
         <div class="form-group">
+
             <label>Net Salary</label>
 
             <input
@@ -116,62 +153,128 @@
             <small>
                 Net Salary = Basic Salary + Allowance - Deduction
             </small>
+
         </div>
 
+
+        <!-- Status -->
 
         <div class="form-group">
 
             <label>Status</label>
 
-            <label style="display:inline; margin-right:15px;">
-                <input
-                    type="radio"
-                    name="status"
-                    value="Pending"
-                    {{ old('status', 'Pending') == 'Pending' ? 'checked' : '' }}
-                >
-                Pending
-            </label>
+            <div class="status-options">
 
-            <label style="display:inline;">
-                <input
-                    type="radio"
-                    name="status"
-                    value="Paid"
-                    {{ old('status') == 'Paid' ? 'checked' : '' }}
-                >
-                Paid
-            </label>
+                <label class="status-option">
+
+                    <input
+                        type="radio"
+                        name="status"
+                        value="Pending"
+                        {{ old('status', 'Pending') == 'Pending' ? 'checked' : '' }}
+                    >
+
+                    Pending
+
+                </label>
+
+
+                <label class="status-option">
+
+                    <input
+                        type="radio"
+                        name="status"
+                        value="Paid"
+                        {{ old('status') == 'Paid' ? 'checked' : '' }}
+                    >
+
+                    Paid
+
+                </label>
+
+            </div>
 
         </div>
 
 
-        <button type="submit">
-            Save Payroll
-        </button>
+        <!-- Buttons -->
+
+        <div class="buttons">
+
+            <button
+                type="submit"
+                class="save-button">
+                Save
+            </button>
+
+
+            <button
+                type="button"
+                class="cancel-button"
+                onclick="clearForm()"
+            >
+                Cancel
+            </button>
+
+        </div>
 
     </form>
-
+</div>
 
     <script>
 
-        function calculateNetSalary()
-        {
-            let basic = parseFloat(document.getElementById('basic_salary').value) || 0;
+        function clearForm() {
 
-            let allowance = parseFloat(document.getElementById('allowance').value) || 0;
+            // Employee dropdown
+            document.querySelector('select[name="employee_id"]').value = '';
 
-            let deduction = parseFloat(document.getElementById('deduction').value) || 0;
+            // Month
+            document.querySelector('input[name="month"]').value = '';
 
-            let netSalary = basic + allowance - deduction;
+            // Salary fields
+            document.querySelector('input[name="basic_salary"]').value = '';
+
+            document.querySelector('input[name="allowance"]').value = '';
+
+            document.querySelector('input[name="deduction"]').value = '';
+
+            // Net salary
+            document.getElementById('net_salary_display').value = '';
+
+            // Status
+            document.querySelectorAll('input[name="status"]').forEach(function(radio) {
+
+                radio.checked = false;
+
+            });
+
+        }
+
+
+        function calculateNetSalary() {
+
+            let basic =
+                parseFloat(document.getElementById('basic_salary').value) || 0;
+
+            let allowance =
+                parseFloat(document.getElementById('allowance').value) || 0;
+
+            let deduction =
+                parseFloat(document.getElementById('deduction').value) || 0;
+
+
+            let netSalary =
+                basic + allowance - deduction;
+
 
             document.getElementById('net_salary_display').value =
                 netSalary.toFixed(2);
+
         }
+
 
         calculateNetSalary();
 
     </script>
 
-</body>
-</html>
+@endsection

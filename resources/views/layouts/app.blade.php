@@ -5,58 +5,236 @@
     <title>@yield('title', 'Employee Management')</title>
 
     <style>
-.page-actions {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+        
+       /* ==============================
+   FORM CONTAINER
+============================== */
+
+.form-container {
+    width: 600px;
+    margin: 30px auto;
+    padding: 30px 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.page-actions a {
-    text-decoration: none;
+
+/* ==============================
+   FORM FIELDS
+============================== */
+
+.form-container .form-group {
+    margin-bottom: 22px;
 }
 
-.back,
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-
-    padding: 10px 16px;
-
-    border: 1px solid #ccc;
-    border-radius: 5px;
-
-    background: white;
+.form-container .form-group > label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
     color: #333;
 }
 
-.back:hover,
-.btn:hover {
-    background: #eeeeee;
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="number"],
+.form-container input[type="date"],
+.form-container input[type="time"],
+.form-container input[type="month"],
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    height: 42px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background: #fff;
 }
 
-.edit {
-    text-decoration: none;
-    font-size: 18px;
-    margin-right: 10px;
-}
-
-.delete {
-    border: none;
-    background: none;
+.form-container select {
     cursor: pointer;
-    font-size: 18px;
 }
 
-.status-active {
-    color: green;
-    font-weight: bold;
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
 }
 
-.status-inactive {
-    color: red;
-    font-weight: bold;
+
+/* ==============================
+   STATUS
+============================== */
+
+.form-container .status-options {
+    display: flex;
+    gap: 25px;
+    align-items: center;
 }
+
+.form-container .status-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.form-container .status-option input[type="radio"] {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+
+/* ==============================
+   FORM BUTTONS
+============================== */
+
+.form-container .buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.form-container .save-button,
+.form-container .cancel-button {
+    min-width: 100px;
+    padding: 10px 20px;
+}
+       .add-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+       
+        .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+       }
+
+        .edit {
+        color: green;
+        font-size: 20px;
+        text-decoration: none;
+        margin-right: 10px;
+        }
+
+        .delete {
+            color: red;
+            font-size: 20px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .status-active {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-inactive {
+            color: red;
+            font-weight: bold;
+        }
+        .status-present {
+            color: green;
+            font-weight: bold;
+        }
+        .status-absent {
+            color: red;
+            font-weight: bold;
+        }
+        .status-leave {
+            color: blue;
+            font-weight: bold;
+        }
+        .page-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .page-actions a {
+            text-decoration: none;
+        }
+
+        .back {
+            display: inline-block;
+            padding: 5px 10px;
+            background: orange;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .save-button {
+            padding: 5px 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .update-button {
+            padding: 5px 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cancel-button {
+            padding: 5px 10px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* .back:hover,
+        .btn:hover {
+            background: #0056b3;
+        } */
+
+        /* .edit {
+            text-decoration: none;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .delete {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 18px;
+        } */
+
+        .status-active {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-inactive {
+            color: red;
+            font-weight: bold;
+        }
         * {
             box-sizing: border-box;
         }

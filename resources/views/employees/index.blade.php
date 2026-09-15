@@ -1,23 +1,20 @@
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
- <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @extends('layouts.app')
 
 @section('title', 'Employee Management')
 
 @section('content')
 
-    <div class="header">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+ {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
+
+   <div class="header">
         <h1>Employee List</h1>
-        
-        <a href="{{ route('dashboard') }}" class="back">
-            🏠 Dashboard
-        </a>
-        <a href="{{ route('employees.create') }}" class="btn">
+        <a href="{{ route('employees.create') }}" class="add-btn">
             Add Employee
         </a>
-    </div>
+   </div>
 
         @if (session('success'))
             <div class="success">
@@ -25,10 +22,9 @@
             </div>
         @endif
 
-    <table>
+    <table border="1" cellpadding="10" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -44,7 +40,7 @@
             @forelse($employees as $employee)
 
                 <tr>
-                    <td>{{ $employee->id }}</td>
+                    {{-- <td>{{ $employee->id }}</td> --}}
                     <td>{{ $employee->name }}</td>
                     <td>{{ $employee->email }}</td>
                     <td>{{ $employee->phone }}</td>
@@ -86,7 +82,7 @@
             @empty
 
                 <tr>
-                    <td colspan="6">
+                    <td colspan="6"style="text-align:center;">
                         No employees found.
                     </td>
                 </tr>

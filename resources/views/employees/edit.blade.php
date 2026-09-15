@@ -1,88 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Employee</title>
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    {{-- <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
+@extends('layouts.app')
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+@section('title', 'Edit Employee')
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 400px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .header h1 {
-            margin: 0;
-        }
-
-        .back {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-         /* Status */
-        .status-options {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .status-option {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: normal;
-            margin: 0;
-        }
-
-        .status-option input {
-            width: auto;
-            margin: 0;
-        }
-
-
-        .error {
-            color: red;
-            margin-bottom: 15px;
-        }
-    </style> --}}
-</head>
-
-<body>
+@section('content')
     
     <div class="header">
         <h1>Edit Employee</h1>
@@ -99,7 +19,7 @@
             </ul>
         </div>
     @endif
-
+<div class="form-container">
     <form action="{{ route('employees.update', $employee->id) }}" method="POST">
 
         @csrf
@@ -162,11 +82,16 @@
                 </label>
 
             </div>
-        <button type="submit">
-            Update 
-        </button>
+
+       
+
+            <button type="submit" class="update-button">
+                Update
+            </button>
+        
 
     </form>
+</div> 
+@endsection
+  
 
-</body>
-</html>

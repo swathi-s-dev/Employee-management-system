@@ -1,26 +1,14 @@
 @extends('layouts.app')
-
 @section('title', 'Department Management')
-
 @section('content')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<div class="header">
     <h1>Department List</h1>
-
-    <div class="page-actions">
-
-        <a href="{{ route('dashboard') }}" class="back">
-            <i class="bi bi-house"></i>
-            Dashboard
-        </a>
-
-        <a href="{{ route('departments.create') }}" class="btn">
-            <i class="bi bi-plus-circle"></i>
+        <a href="{{ route('departments.create') }}" class="add-btn">
             Add Department
         </a>
-
     </div>
-
-
     @if (session('success'))
 
         <div class="success">
@@ -30,12 +18,11 @@
     @endif
 
 
-    <table>
+    <table border="1" cellpadding="10" cellspacing="0" width="100%">
 
         <thead>
 
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Status</th>
@@ -50,9 +37,9 @@
 
                 <tr>
 
-                    <td>
+                    {{-- <td>
                         {{ $department->id }}
-                    </td>
+                    </td> --}}
 
                     <td>
                         {{ $department->name }}
