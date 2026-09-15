@@ -258,19 +258,19 @@
     <div class="links">
 
         <a href="{{ route('employees.showAll') }}">
-            👥 Employees
+            👥 Employees View
         </a>
          <br>
         <a href="{{ route('departments.showAll') }}">
-            🏢 Departments
+            🏢 Departments View
         </a><br>
 
         <a href="{{ route('attendances.index') }}">
-            📅 Attendance
+            📅 Attendance 
         </a><br>
 
         <a href="{{ route('payrolls.index') }}">
-            💰 Payroll
+            💰 Payroll 
         </a><br>
 
     </div>
