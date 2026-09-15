@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Employee List</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
+@extends('layouts.app')
 
-<body>
+@section('title', 'Employee View')
+
+@section('content')
 
 <div class="header">
-    <h1>Employee List</h1>
+    <h1>Employee View</h1>
 
     <a href="{{ route('dashboard') }}" class="back">
         Back
@@ -69,6 +66,4 @@
     </tbody>
 
 </table>
-
-</body>
-</html>
+@endsection

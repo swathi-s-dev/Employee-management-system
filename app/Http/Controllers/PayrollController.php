@@ -53,11 +53,24 @@ class PayrollController extends Controller
                 ]);
         }
 
-        Payroll::create($validate);
+       Payroll::create($validate);
+
+        $employee = Employee::find($request->employee_id);
+
+        $employee->update([
+            'salary' => $request->basic_salary,
+        ]);
 
         return redirect()
             ->route('payrolls.index')
             ->with('success', 'Payroll created successfully.');
+    }
+
+    public function showAll()
+    {
+        $payrolls = Payroll::with('employee')->latest()->get();
+
+        return view('payrolls.showAll', compact('payrolls'));
     }
 
     public function edit(Payroll $payroll)

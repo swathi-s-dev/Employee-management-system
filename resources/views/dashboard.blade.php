@@ -265,12 +265,12 @@
             🏢 Departments View
         </a><br>
 
-        <a href="{{ route('attendances.index') }}">
-            📅 Attendance 
+        <a href="{{ route('attendances.showAll') }}">
+            📅 Attendance View
         </a><br>
 
-        <a href="{{ route('payrolls.index') }}">
-            💰 Payroll 
+        <a href="{{ route('payrolls.showAll') }}">
+            💰 Payroll View
         </a><br>
 
     </div>

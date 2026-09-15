@@ -37,10 +37,7 @@
 
                 <tr>
 
-                    {{-- <td>
-                        {{ $department->id }}
-                    </td> --}}
-
+                    
                     <td>
                         {{ $department->name }}
                     </td>
@@ -96,7 +93,7 @@
 
                 <tr>
 
-                    <td colspan="5" style="text-align:center;">
+                    <td colspan="4" style="text-align:center;">
 
                         No Departments found.
 

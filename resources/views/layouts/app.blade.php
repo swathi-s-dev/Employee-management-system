@@ -84,6 +84,12 @@
     margin: 0;
 }
 
+    table td {
+        text-align: center;
+    }
+ table th {
+       background-color: #ddd6d6;
+    }
 .form-container .status-option input[type="radio"] {
     width: auto;
     height: auto;

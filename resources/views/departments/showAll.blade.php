@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Department List</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
+@extends('layouts.app')
 
-<body>
+@section('title', 'Department View')
+
+@section('content')
 
 <div class="header">
-    <h1>Department List</h1>
+    <h1>Department View</h1>
 
     <a href="{{ route('dashboard') }}" class="back">
         Back
@@ -19,7 +16,7 @@
 
    <thead>
             <tr>
-                <th>ID</th>
+                
                 <th>Name</th>
                 <th>Description</th>
                 <th>Status</th>
@@ -32,7 +29,7 @@
             @forelse($departments as $department)
 
                 <tr>
-                    <td>{{ $department->id }}</td>
+                    
                     <td>{{ $department->name }}</td>
                     <td>{{ $department->description }}</td>
                     <td>
@@ -57,26 +54,4 @@
 
 </table>
 
-</body>
-</html>
-{{-- <div class="sidebar">
-
-    <h2>Menu</h2>
-
-    <a href="{{ route('employees.index') }}">
-        👥 Employees
-    </a>
-
-    <a href="{{ route('departments.index') }}">
-        🏢 Departments
-    </a>
-
-    <a href="{{ route('attendances.index') }}">
-        📅 Attendance
-    </a>
-
-    <a href="{{ route('payrolls.index') }}">
-        💰 Payroll
-    </a>
-
-</div> --}}
+@endsection

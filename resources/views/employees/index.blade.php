@@ -7,8 +7,6 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
- {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
-
    <div class="header">
         <h1>Employee List</h1>
         <a href="{{ route('employees.create') }}" class="add-btn">
