@@ -393,6 +393,25 @@
             }
 
         }
+        .header-title {
+    display: flex;
+    align-items: center;
+}
+
+.employee-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.header-title h1 {
+    margin: 0 0 8px 0;
+}
+
+.header-title p {
+    margin: 0;
+}
 
     </style>
 
@@ -406,17 +425,20 @@
 
     <div class="top-header">
 
-        <div>
+       <div>
+            <img 
+                src="{{ asset('image/employee.jpg') }}" 
+                class="employee-image" 
+                alt="Employee Image">
 
             <h1>
-                Employee Management Dashboard
+                Employee Management System
             </h1>
 
             <p>
-                Welcome,
+                Welcome, 
                 <strong>{{ Auth::user()->name }}</strong>
             </p>
-
         </div>
 
         <form action="{{ route('logout') }}" method="POST">

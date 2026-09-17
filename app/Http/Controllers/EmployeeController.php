@@ -47,12 +47,7 @@ class EmployeeController extends Controller
         return view('employees.showAll', compact('employees'));
     }
 
-    // public function show(Employee $employee)
-    // {
-    //     $employee->load('department');
-
-    //     return view('employees.show', compact('employee'));
-    // }
+   
 
     public function edit(Employee $employee)
     {

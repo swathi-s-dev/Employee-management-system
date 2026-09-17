@@ -34,3 +34,49 @@ copy .env.example .env
 php artisan key:generate
 
 npm install
+
+
+
+
+# Employee Management System
+
+A Laravel-based Employee Management System with authentication, employee management, departments, attendance, payroll, and REST API.
+
+## Technologies
+
+- Laravel 13
+- PHP 8.3
+- MySQL
+- Bootstrap
+- REST API
+
+## Features
+
+- Admin Login / Logout
+- Dashboard
+- Employee CRUD
+- Department CRUD
+- Attendance Management
+- Payroll Management
+- Employee REST API
+- Employee status management
+
+/login-employee
+/dashboard
+/employee
+/employees/create
+/employees/{id}/edit
+
+
+## REST API
+### Get All Employees
+GET `/api/employees`
+### Get Single Employee
+GET `/api/employees/{id}`
+### Create Employee
+POST `/api/employees`
+### Update Employee
+PUT `/api/employees/{id}`
+### Delete Employee
+DELETE `/api/employees/{id}`
+
