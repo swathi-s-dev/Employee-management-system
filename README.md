@@ -23,6 +23,23 @@ The project includes admin authentication, dashboard, employee management, depar
 - MySQL
 - XAMPP
 - Node.js / npm
+## Features
+
+- Admin Login / Logout
+- Dashboard
+- Employee CRUD
+- Department CRUD
+- Attendance Management
+- Payroll Management
+- Employee REST API
+- Employee status management
+
+## REST API
+GET `/api/employees`
+GET `/api/employees/{id}`
+POST `/api/employees`
+PUT `/api/employees/{id}`
+DELETE `/api/employees/{id}`
 
 ## 1. Install
 
